@@ -16,7 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.db import connection
+from django.shortcuts import render, redirect
+
+# Inline view function for actors_list
+def actors_list(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM ACTOR")
+        rows = cursor.fetchall()
+        columns = [col[0] for col in cursor.description]  # Get column names
+
+    # Convert rows to a list of dictionaries
+    data = [dict(zip(columns, row)) for row in rows]
+
+    return render(request, 'actors_list.html', {'data': data})
+
+# Inline view function for home (redirecting to /actors/)
+def home(request):
+    return redirect('actors_list')  # Redirect to actors list page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('actors/', actors_list, name='actors_list'),
+    path('', home, name='home'),  # Route for root, redirects to actors list
 ]
