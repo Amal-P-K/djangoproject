@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student</title>
+</head>
+<body>
+    <form method="post" action="{% url 'submit' %}">
+        {% csrf_token %}
+        <p>Student Name: <input type="text" name="name"></p>
+        <p>Student Age: <input type="text" name="age"></p>
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+</body>
+</html>

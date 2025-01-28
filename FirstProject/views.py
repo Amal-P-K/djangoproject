@@ -45,3 +45,26 @@ def student_info(request):
     ]
 
     return render(request, 'student_info.html', {'data': data})
+
+
+
+def home(request):
+	print("correct")
+	context = {
+		'message': 'Hello, Django!',
+	}
+	return render(request, 'home.html', context)
+def students(request):
+    return render(request, 'students.html')
+
+def submit(request):
+    name = request.POST.get("name")  
+    age = request.POST.get("age")  
+    print(name) 
+    print(age)
+    context = {
+        'message': 'Logged in!',
+        'name': name,
+        'age':age,
+    }
+    return render(request, 'submit.html', context)
