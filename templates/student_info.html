@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title> Student </title>
+    </head>
+    <body>
+        <h3>Students Information</h3>
+        <ol>
+            {% for student in data %}
+                <li>{{ student.name }}
+                    <ul>
+                        <li>Age: {{ student.age }}</li>
+                        <li>Grade: {{ student.grade }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>

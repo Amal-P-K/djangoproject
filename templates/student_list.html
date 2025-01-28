@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title> Student </title>
+    </head>
+    <body>
+        <h3>Students Lists</h3>
+        <ul>
+            {% for student in data %}
+                <li>Student Name: {{ student.name }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
